@@ -1,0 +1,60 @@
+#include<stdio.h>
+int ternary(int a[],int search,int l,int r)
+{
+
+ if(r-l>0)
+ {   int mid1=l+(r-l)/3;
+     int mid2=mid1+(r-l)/3;
+      if(search==a[mid2])
+     {
+        return mid2;
+     }
+      if(search>a[mid2])
+     {
+        return mid1;
+     }
+
+     if(search>a[mid2])
+     {
+        return ternary(a,search,mid2+1,r);
+     }
+
+      if(search<a[mid1])
+       {
+          return ternary(a,search,l,mid1);
+       }
+
+       return ternary(a,search,mid1,mid2);
+
+   }     else
+            return -1;
+}
+int main()
+{ int i,n,search,k;
+ printf("enter n :");
+ scanf("%d",&n);
+ int a[n];
+ int l=0;
+ int r=n;
+ int mid;
+ printf("\nenter array\n");
+ for(i=0;i<n;i++)
+ {
+     scanf("%d",&a[i]);
+
+ }
+ printf("enter no. to search:");
+ scanf("%d",&search);
+ k=ternary(a,search,l,r);
+ if(k==-1)
+    printf("not exits");
+ else
+    printf("found at:%d",k);
+
+ }
+
+
+
+
+
+
